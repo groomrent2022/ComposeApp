@@ -1,10 +1,11 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
-
 }
 
 android {
@@ -79,4 +80,16 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     //noinspection UseTomlInstead
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    // FOR ROOM
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
+
+    // For Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
 }

@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +35,10 @@ import com.learning.mycomposeapp.viewmodel.QuoteViewModel
 @Composable
 fun QuoteAuthors(onBackClicked: (authorName: String) -> Unit) {
     val quoteViewModel: QuoteViewModel = hiltViewModel()
-    quoteViewModel.getQuoteCategory()
+
+    LaunchedEffect(Unit) {
+        quoteViewModel.getQuoteCategory()
+    }
 
     val quoteCategoryList = quoteViewModel.quoteCategory.collectAsState()
     Log.d(TAG, "Response: ${quoteCategoryList.value}")

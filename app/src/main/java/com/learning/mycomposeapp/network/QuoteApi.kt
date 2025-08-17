@@ -1,6 +1,5 @@
 package com.learning.mycomposeapp.network
 
-import com.learning.mycomposeapp.model.QuoteItem
 import com.learning.mycomposeapp.model.QuoteResponseModel
 import retrofit2.Response
 import retrofit2.http.GET

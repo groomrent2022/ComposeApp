@@ -9,6 +9,7 @@ import com.learning.mycomposeapp.model.QuoteItem
 import com.learning.mycomposeapp.repository.QuoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
@@ -23,7 +24,7 @@ class QuoteViewModel @Inject constructor(
         get() = repository.quoteListByCategoryRes
 
     fun getQuoteCategory() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.getQuoteCategory()
         }
     }
@@ -31,7 +32,7 @@ class QuoteViewModel @Inject constructor(
 
     fun getQuoteList() {
         val authName: String? = savedStateHandle["author_name"]
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             authName?.let {  repository.getQuoteListByCategory(authName)}
         }
     }
