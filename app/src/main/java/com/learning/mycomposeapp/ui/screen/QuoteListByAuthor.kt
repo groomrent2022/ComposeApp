@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,11 +30,15 @@ import com.learning.mycomposeapp.MainActivity.Companion.TAG
 import com.learning.mycomposeapp.R
 import com.learning.mycomposeapp.model.QuoteItem
 import com.learning.mycomposeapp.viewmodel.QuoteViewModel
+import kotlinx.coroutines.delay
 
 @Composable
 fun QuoteListByAuthor(onBackClicked: () -> Unit) {
     val quoteViewModel: QuoteViewModel = hiltViewModel()
-    quoteViewModel.getQuoteList()
+    LaunchedEffect(Unit) {
+        delay(5000)
+        quoteViewModel.getQuoteList()
+    }
 
     val quoteList = quoteViewModel.quoteListByCategory.collectAsState()
     Log.d(TAG, "Response: ${quoteList.value}")
