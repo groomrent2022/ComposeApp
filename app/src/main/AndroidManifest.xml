@@ -15,7 +15,7 @@
         android:theme="@style/Theme.MyComposeApp">
         <!--android:name="."-->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MyComposeApp">
             <intent-filter>

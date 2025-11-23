@@ -2,15 +2,20 @@ package com.learning.mycomposeapp.ui.screen
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.OverscrollEffect
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
@@ -28,7 +33,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.learning.mycomposeapp.MainActivity.Companion.TAG
+import com.learning.mycomposeapp.ui.MainActivity.Companion.TAG
 import com.learning.mycomposeapp.R
 import com.learning.mycomposeapp.viewmodel.QuoteViewModel
 
@@ -45,6 +50,22 @@ fun QuoteAuthors(onBackClicked: (authorName: String) -> Unit) {
     if (quoteCategoryList.value.isEmpty()) {
         Loader()
     } else {
+        /*LazyHorizontalGrid(
+            rows = GridCells.Fixed(2),
+            modifier = Modifier
+                .height(300.dp)
+                .padding(4.dp),
+            contentPadding = PaddingValues(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            items(quoteCategoryList.value) { item ->
+                AuthorItemView(item) {
+                    onBackClicked(item)
+                }
+            }
+        }*/
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(2), // 2 columns
             modifier = Modifier

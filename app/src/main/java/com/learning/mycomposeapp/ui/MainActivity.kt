@@ -1,4 +1,4 @@
-package com.learning.mycomposeapp
+package com.learning.mycomposeapp.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -34,7 +34,6 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun LaunchApp() {
         val navController = rememberNavController()
-
         NavHost(navController = navController, startDestination = "main_screen") {
             composable(route = "main_screen") {
                 QuoteAuthors { authorName ->
@@ -43,7 +42,9 @@ class MainActivity : ComponentActivity() {
             }
             composable(
                 route = "quote_list_screen/{author_name}",
-                arguments = listOf(navArgument("author_name") { type = NavType.StringType })
+                arguments = listOf(navArgument("author_name") {
+                    type = NavType.Companion.StringType
+                })
             ) {
                 // Getting argument data here. We can get it directly in viewmodel. See in ViewModel
                 val authorName = it.arguments?.getString("author_name")

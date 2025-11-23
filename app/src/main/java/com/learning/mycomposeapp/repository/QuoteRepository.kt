@@ -15,6 +15,7 @@ class QuoteRepository @Inject constructor(
 
     private val quoteCategory = MutableStateFlow<List<String>>(emptyList())
     val quoteCategoryRes: StateFlow<List<String>> get() = quoteCategory
+
     suspend fun getQuoteCategory() {
 
         val quoteListFromRoomDb = getQuoteList(quoteDao.getAllQuotes()?.quotes)

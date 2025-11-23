@@ -26,7 +26,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.learning.mycomposeapp.MainActivity.Companion.TAG
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.learning.mycomposeapp.ui.MainActivity.Companion.TAG
 import com.learning.mycomposeapp.R
 import com.learning.mycomposeapp.model.QuoteItem
 import com.learning.mycomposeapp.viewmodel.QuoteViewModel
